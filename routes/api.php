@@ -22,6 +22,8 @@ Route::get("/posts", "Api\PostController@index");
 
 Route::get("/posts/{id}", "Api\PostController@show");
 
+Route::get("/posts/search/{title}", "Api\PostsController@searchPosts");
+
 Route::get("/categories", "Api\CategoriesController@index");
 
 Route::get("/categories/{id}", "Api\CategoriesController@show");
