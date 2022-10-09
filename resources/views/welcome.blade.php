@@ -9,7 +9,7 @@
             html, body {
                 background-color: #fff;
                 height: 100vh;
-                color: #636b6f;
+                color: #6aacb0;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 margin: 0;
@@ -40,12 +40,12 @@
             }
 
             .title {
-                font-size: 60px;
+                font-size: 40px;
                 font-weight: 600;
             }
 
             .links > a {
-                color: #4040ff;
+                color: #1f54db;
                 padding: 20px 25px;
                 font-size: 18px;
                 font-weight: 600;

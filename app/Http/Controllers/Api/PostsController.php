@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Post;
+use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class PostsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +16,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with("user", "category", "tags")->paginate(20);
+        $posts = Post::with("user", "category", "tags")->paginate(10);
 
         return response()->json([
-            "result" => true,
+            "response" => true,
             "count" => count($posts),
-            "data" => $posts,
+            "result" => $posts,
         ]);
     }
 
@@ -57,8 +58,8 @@ class PostController extends Controller
 
         if ($post) {
             return response()->json([
-                "result" => true,
-                "data" => $post,
+                "response" => true,
+                "result" => $post,
             ]);
         } 
         else {
@@ -98,5 +99,14 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function searchPosts($title)
+    {
+        $posts = Post::with("user", "category", "tags")->where("title", "LIKE", "%" . $title . "%")->get();
+            return response()->json([
+            "response" => true,
+            "result" => $posts,
+        ]);
     }
 }

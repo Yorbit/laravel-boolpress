@@ -10,7 +10,7 @@
     @forelse ($category->posts as $post)
         @include("post", $post)
         <div class="d-flex container justify-content-center w-100 post-footer">
-            <a href="{{ route('admin.show', $post->id) }}" class="btn btn-lg btn-primary m-3">DETTAGLI</a>
+            <a href="{{ route('categories.show', $post->id) }}" class="btn btn-lg btn-primary m-3">DETTAGLI</a>
             <form action="{{ route('admin.clear', $post->id) }}" class="m-3" method="post">
                 @csrf
                 @method("PATCH")

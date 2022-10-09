@@ -22,13 +22,13 @@
                         @forelse ($posts as $post)
                             <tr>
                                 <td>{{ $post->id }}</td>
-                                <td><a href='{{ route("admin.show", $post->id) }}'>{{ $post->title }}</a></td>
+                                <td><a href='{{ route("posts.show", $post->id) }}'>{{ $post->title }}</a></td>
                                 <td>{{ $post->user->name }}</td>
                                 <td>{{ $post->date }}</td>
                                 <td>{{ isset($post->category->name) ? $post->category->name : "-" }}</td>
                                 <td class="d-flex">
-                                    <a href='{{ route("admin.edit", $post->id) }}' class="btn btn-sm btn-success">MODIFICA</a>
-                                    <form action='{{ route("admin.destroy", $post->id) }}' method="POST" class="delete-element-button">
+                                    <a href='{{ route("posts.edit", $post->id) }}' class="btn btn-sm btn-success">MODIFICA</a>
+                                    <form action='{{ route("posts.destroy", $post->id) }}' method="POST" class="delete-element-button">
                                         @csrf
                                         @method("DELETE")
                                         <button type="submit" class="btn btn-sm text-danger">ELIMINA</button>

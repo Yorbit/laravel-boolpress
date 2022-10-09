@@ -15,11 +15,11 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $categories = Category::with("posts.tags")->paginate(10);
+        $categories = Category::with("posts.category", "posts.tags", "posts.user")->paginate(10);
 
         return response()->json([
-            "result" => true,
-            "data" => $categories
+            "response" => true,
+            "result" => $categories
         ]);
     }
 
@@ -50,14 +50,14 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $category = Category::with("posts.tags")->find($id);
+        $category = Category::with("posts.category", "posts.tags", "posts.user")->where("slug", $slug)->first();
 
         if($category) {
             return response()->json([
-                "result" => true,
-                "data" => $category,
+                "response" => true,
+                "result" => $category,
             ]);
         } else {
             return response(" ", 404);

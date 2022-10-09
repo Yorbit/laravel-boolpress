@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('MAIN ZONE') }}</div>
+                <div class="card-header">{{ __('Mainzone') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,13 +14,14 @@
                         </div>
                     @endif
 
-                    {{ __('Accesso Come Admin') }}
+                    {{ __('GESTIONE RISERVATA: ADMIN') }}
                 </div>
             </div>
         </div>
     </div>
+    
     <div class="text-center pt-5">
-        <a href="{{ route('admin.index') }}" class="btn btn-lg btn-primary">ARCHIVIO POST</a>
+        <a href="{{ route('posts.index') }}" class="btn btn-lg btn-primary">POST</a>
     </div>
 </div>
 @endsection

@@ -15,11 +15,11 @@ class TagsController extends Controller
      */
     public function index()
     {
-        $tags = Tag::with("posts")->paginate(5);
+        $tags = Tag::with("posts.user", "posts.tags", "posts.category")->get();
 
         return response()->json([
-            "result" => true,
-            "data" => $tags,
+            "response" => true,
+            "result" => $tags,
         ]);
     }
 
@@ -50,14 +50,14 @@ class TagsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $tag = Tag::with("posts.user")->find($id);
+        $tag = Tag::with("posts.user", "posts.category", "posts.tags")->where("slug", $slug)->first();
 
         if ($tag) {
             return response()->json([
-                "result" => true,
-                "data" => $tag
+                "response" => true,
+                "result" => $tag
             ]);
         } else {
             return response(" ", 404);

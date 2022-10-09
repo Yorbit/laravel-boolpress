@@ -18,16 +18,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get("/posts", "Api\PostController@index");
+Route::get("/posts", "Api\PostsController@index");
 
-Route::get("/posts/{id}", "Api\PostController@show");
+Route::get("/posts/{id}", "Api\PostsController@show");
 
 Route::get("/posts/search/{title}", "Api\PostsController@searchPosts");
 
 Route::get("/categories", "Api\CategoriesController@index");
 
-Route::get("/categories/{id}", "Api\CategoriesController@show");
+Route::get("/categories/{slug}", "Api\CategoriesController@show");
 
 Route::get("/tags", "Api\TagsController@index");
 
-Route::get("/tags/{id}", "Api\TagsController@show");
+Route::get("/tags/{slug}", "Api\TagsController@show");
